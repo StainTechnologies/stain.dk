@@ -1,3 +1,5 @@
+import { pseudoRandomBytes } from "crypto"
+
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
@@ -29,6 +31,10 @@ exports.createPages = async (props: CreatePagesProps) => {
               slug
               title
             }
+            fields {
+              locale
+              pathPrefix
+            }
           }
         }
     }
@@ -51,6 +57,10 @@ exports.createPages = async (props: CreatePagesProps) => {
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
       let slug = post.frontmatter.slug
       slug = slug ? slug : slugify(post.frontmatter.title)
+
+      if (post.fields.locale != "en-US") {
+        slug = post.fields.pathPrefix + slug
+      }
 
       createPage({
         path: slug,

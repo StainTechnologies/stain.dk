@@ -1074,6 +1074,76 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@formatjs/ecma402-abstract@1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.12.0.tgz#2fb5e8983d5fae2fad9ec6c77aec1803c2b88d8e"
+  integrity sha512-0/wm9b7brUD40kx7KSE0S532T8EfH06Zc41rGlinoNyYXnuusR6ull2x63iFJgVXgwahm42hAW7dcYdZ+llZzA==
+  dependencies:
+    "@formatjs/intl-localematcher" "0.2.31"
+    tslib "2.4.0"
+
+"@formatjs/fast-memoize@1.2.6":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@formatjs/fast-memoize/-/fast-memoize-1.2.6.tgz#a442970db7e9634af556919343261a7bbe5e88c3"
+  integrity sha512-9CWZ3+wCkClKHX+i5j+NyoBVqGf0pIskTo6Xl6ihGokYM2yqSSS68JIgeo+99UIHc+7vi9L3/SDSz/dWI9SNlA==
+  dependencies:
+    tslib "2.4.0"
+
+"@formatjs/icu-messageformat-parser@2.1.8":
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/@formatjs/icu-messageformat-parser/-/icu-messageformat-parser-2.1.8.tgz#45cb678da4c760009b52fe6ca2c13aedbc200fee"
+  integrity sha512-T1R/UtPSCdznwjlfIJDl9XnjZdcFap+rPJrKC9uATr/sUdziVad3SfRQFf50JOuHptbk6knz+VdiYdApek4Sag==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.12.0"
+    "@formatjs/icu-skeleton-parser" "1.3.13"
+    tslib "2.4.0"
+
+"@formatjs/icu-skeleton-parser@1.3.13":
+  version "1.3.13"
+  resolved "https://registry.yarnpkg.com/@formatjs/icu-skeleton-parser/-/icu-skeleton-parser-1.3.13.tgz#f7e186e72ed73c3272d22a3aacb646e77368b099"
+  integrity sha512-qb1kxnA4ep76rV+d9JICvZBThBpK5X+nh1dLmmIReX72QyglicsaOmKEcdcbp7/giCWfhVs6CXPVA2JJ5/ZvAw==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.12.0"
+    tslib "2.4.0"
+
+"@formatjs/intl-displaynames@6.1.3":
+  version "6.1.3"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-displaynames/-/intl-displaynames-6.1.3.tgz#c9d283db518cd721c0855e9854bfadb9ba304b6a"
+  integrity sha512-yBB165IH72fweGymRPrq8PQ4R5gKMR8vOj6XmkxGBICyJMhknc+RpG02g9Jsk/4jvO6qw/H0QtXHrHIg+Jv0sw==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.12.0"
+    "@formatjs/intl-localematcher" "0.2.31"
+    tslib "2.4.0"
+
+"@formatjs/intl-listformat@7.1.2":
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-listformat/-/intl-listformat-7.1.2.tgz#3c5145436434795fa834150d0b6b6dc577aa6964"
+  integrity sha512-WfWkJ8k41jZIhXgBtC2T1SpTSKYig99g9MVqrVRco4kduv/6GUWq1eMjk84qZfbU4rwdwc8qct+/gB6DTS17+w==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.12.0"
+    "@formatjs/intl-localematcher" "0.2.31"
+    tslib "2.4.0"
+
+"@formatjs/intl-localematcher@0.2.31":
+  version "0.2.31"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-localematcher/-/intl-localematcher-0.2.31.tgz#aada2b1e58211460cedba56889e3c489117eb6eb"
+  integrity sha512-9QTjdSBpQ7wHShZgsNzNig5qT3rCPvmZogS/wXZzKotns5skbXgs0I7J8cuN0PPqXyynvNVuN+iOKhNS2eb+ZA==
+  dependencies:
+    tslib "2.4.0"
+
+"@formatjs/intl@2.4.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-2.4.2.tgz#a2ae882cfd840391f6c319d241d449437511c285"
+  integrity sha512-RuZT+fecObhWA4CuoDolftfbEYn1yaqTG4yiTSX7W6vnvAupZOqyZXctzebtQ9pDhm6uHHNQSLQ0NL3Y8pCi9g==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.12.0"
+    "@formatjs/fast-memoize" "1.2.6"
+    "@formatjs/icu-messageformat-parser" "2.1.8"
+    "@formatjs/intl-displaynames" "6.1.3"
+    "@formatjs/intl-listformat" "7.1.2"
+    intl-messageformat "10.1.5"
+    tslib "2.4.0"
+
 "@gatsbyjs/parcel-namer-relative-to-cwd@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@gatsbyjs/parcel-namer-relative-to-cwd/-/parcel-namer-relative-to-cwd-1.9.0.tgz#9263de16d93463974d6fe0cd960eadca184a7d9f"
@@ -1474,6 +1544,97 @@
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@msgpackr-extract/msgpackr-extract-win32-x64/-/msgpackr-extract-win32-x64-2.1.2.tgz#f2d8b9ddd8d191205ed26ce54aba3dfc5ae3e7c9"
   integrity sha512-rIZVR48zA8hGkHIK7ED6+ZiXsjRCcAVBJbm8o89OKAMTmEAQ2QvoOxoiu3w2isAaWwzgtQIOFIqHwvZDyLKCvw==
+
+"@napi-rs/pinyin-android-arm-eabi@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/pinyin-android-arm-eabi/-/pinyin-android-arm-eabi-1.7.1.tgz#9a21f7529adeb79d5e51c819e9c2bdef6cc84407"
+  integrity sha512-Dhvhz3qm3SJoPQUd2wEnUFQH0OizjBkUQOEGPcyGIpwbdyS5tVppxuAC7dO+iUh9F/uvhtKwoibDdLiupqdptw==
+
+"@napi-rs/pinyin-android-arm64@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/pinyin-android-arm64/-/pinyin-android-arm64-1.7.1.tgz#e578bb90b28b255259898a0e2961f06924caa7b8"
+  integrity sha512-h+qYBRDu7mUkKiOPRaZmNUPdlxfbURUggKqncYUlV2TmHAALfoPBPoT3DD8ClQXVax1eYp4UWSloRA3hUxFLcQ==
+
+"@napi-rs/pinyin-darwin-arm64@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/pinyin-darwin-arm64/-/pinyin-darwin-arm64-1.7.1.tgz#b448e33e7f248e4efaf7e9f54e7693c26141206d"
+  integrity sha512-5NYFZT6PtBtO02N23vG1pcCGnDlwjlYFaq7I/V6pbI5reGDzP6Xg1TqnK635jb0AgC2yM9ojjBfR5kJYViPQTQ==
+
+"@napi-rs/pinyin-darwin-x64@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/pinyin-darwin-x64/-/pinyin-darwin-x64-1.7.1.tgz#a4db14371857e9ceae9ebbbda083955261923217"
+  integrity sha512-xomDqZC7qAmBCAqPPKgvhJRUreCgVLIa7KHdP1kMq3iOJD99ZoV9fkf8EHP54Ia5zNxUVgGSUOcEA8BwLwT1ig==
+
+"@napi-rs/pinyin-freebsd-x64@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/pinyin-freebsd-x64/-/pinyin-freebsd-x64-1.7.1.tgz#393e1b5dc29e83826f26504b41cf06fda99b1914"
+  integrity sha512-nGZhpA2vyTWPKguGFKMWUo8zFwPhgwNyVqVDF6T+djgzi6VKr3IUQHX5vs2lWyQixPxkrq4oxPHISvy+nHyrcg==
+
+"@napi-rs/pinyin-linux-arm-gnueabihf@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/pinyin-linux-arm-gnueabihf/-/pinyin-linux-arm-gnueabihf-1.7.1.tgz#ea1e7572f2915f9c73bd49b6e973239ff6679c5a"
+  integrity sha512-PfCuDa8S0Zh2QSOoVnowlHb7j/XkaZtRDq7GoqS7Hy4cuXDM00pHVclh9C5RfbEPQ8Nefz9ryeyYItYxaRt7Qg==
+
+"@napi-rs/pinyin-linux-arm64-gnu@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/pinyin-linux-arm64-gnu/-/pinyin-linux-arm64-gnu-1.7.1.tgz#4ab28305a1dd5287cba8ff6859af0a4e39e17afe"
+  integrity sha512-ay+tonSYDRhJDy95fRtXsu5wDyMcf3v2qxqVKG69ly8PW2ekbGTKLSJILJbhFx5NOwyB6DcmiFZvZQqlpaWNKQ==
+
+"@napi-rs/pinyin-linux-arm64-musl@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/pinyin-linux-arm64-musl/-/pinyin-linux-arm64-musl-1.7.1.tgz#7a6d9090b8f2a443736ab2112b237c65e384c162"
+  integrity sha512-wR3FOgewIoGeB9HsGqB2AZBzC+G1QKviPSG9BD5joXSsffcekhG47/aWvy4bnILF1gCDf1SGDo4o4WMRlpD+oQ==
+
+"@napi-rs/pinyin-linux-x64-gnu@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/pinyin-linux-x64-gnu/-/pinyin-linux-x64-gnu-1.7.1.tgz#0c75c1bd7969af58ef2d3c48f04e036cbfc7995a"
+  integrity sha512-p+S9kmdZlTtv4UVpCoyhHZRZ7WcuHY5OOAniWoBn9S3pq2ac8ptX9zvZkqwJ4jUvaeoXOQKqKNQnJTw05ECfSA==
+
+"@napi-rs/pinyin-linux-x64-musl@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/pinyin-linux-x64-musl/-/pinyin-linux-x64-musl-1.7.1.tgz#481d81b2d132563805b59189ce8cc87d8e44e125"
+  integrity sha512-qfpbsIHw9wdzdm6YyrUhgKwCyHl4eutOIcJDWRZcvVeuxaFwaYiSTyhn57uMCVkk/M4zTLFW+iUZra6a9tDw/g==
+
+"@napi-rs/pinyin-win32-arm64-msvc@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/pinyin-win32-arm64-msvc/-/pinyin-win32-arm64-msvc-1.7.1.tgz#76d96230db89009b0fd16809eff27809df7f2b4e"
+  integrity sha512-MNorAzMFmmPxqq3pzJGQ11fV/cGuKD8AQfZ2r0es32+4oQX/Ke6HF1CRr1ijG9ERyhCz1H0U4BnjUTwadpjjcQ==
+
+"@napi-rs/pinyin-win32-ia32-msvc@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/pinyin-win32-ia32-msvc/-/pinyin-win32-ia32-msvc-1.7.1.tgz#3c4043be6e577aa6ec065cd4decb28814c360dd2"
+  integrity sha512-LraMduh848NTS+EpVRI8ufCWoCucbDOyq8GL874aaKL514xqMSgRWaPMEz7WkDE0R/8egpJK9eA6N7pDBpF92w==
+
+"@napi-rs/pinyin-win32-x64-msvc@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/pinyin-win32-x64-msvc/-/pinyin-win32-x64-msvc-1.7.1.tgz#7802addd9d5bdc49b6c968e898f4d31da5ba57ea"
+  integrity sha512-W5hKb0AusXieCDot4O1SOTee1u46vKkHZ/vhdJqudzSubNmb6mQgMxSxPkfLMEvm+1hchOzrwVO0xCVtrLW1bw==
+
+"@napi-rs/pinyin@^1.5.0":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@napi-rs/pinyin/-/pinyin-1.7.1.tgz#a08e71749228224ac053a3aafb9d90b9a0dfb1e8"
+  integrity sha512-+Mutbfd28IPXFqK1MQIhzVn1riPuKPVDDfRvn1aN1o17xmWShE5orRr43UFdVVAsnagrgT9yvbXeAS7GwUYGZw==
+  dependencies:
+    "@napi-rs/triples" "^1.1.0"
+  optionalDependencies:
+    "@napi-rs/pinyin-android-arm-eabi" "1.7.1"
+    "@napi-rs/pinyin-android-arm64" "1.7.1"
+    "@napi-rs/pinyin-darwin-arm64" "1.7.1"
+    "@napi-rs/pinyin-darwin-x64" "1.7.1"
+    "@napi-rs/pinyin-freebsd-x64" "1.7.1"
+    "@napi-rs/pinyin-linux-arm-gnueabihf" "1.7.1"
+    "@napi-rs/pinyin-linux-arm64-gnu" "1.7.1"
+    "@napi-rs/pinyin-linux-arm64-musl" "1.7.1"
+    "@napi-rs/pinyin-linux-x64-gnu" "1.7.1"
+    "@napi-rs/pinyin-linux-x64-musl" "1.7.1"
+    "@napi-rs/pinyin-win32-arm64-msvc" "1.7.1"
+    "@napi-rs/pinyin-win32-ia32-msvc" "1.7.1"
+    "@napi-rs/pinyin-win32-x64-msvc" "1.7.1"
+
+"@napi-rs/triples@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@napi-rs/triples/-/triples-1.1.0.tgz#88c35b72e79a20b79bb4c9b3e2817241a1c9f4f9"
+  integrity sha512-XQr74QaLeMiqhStEhLn1im9EOMnkypp7MZOwQhGzqp2Weu5eQJbpPxWxixxlYRKWPOmJjsk6qYfYH9kq43yc2w==
 
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"
@@ -2038,6 +2199,14 @@
   dependencies:
     "@types/unist" "*"
 
+"@types/hoist-non-react-statics@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+  dependencies:
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+
 "@types/http-cache-semantics@*":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.1.tgz#0ea7b61496902b95890dc4c3a116b60cb8dae812"
@@ -2148,7 +2317,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@>=16", "@types/react@^18.0.21":
+"@types/react@*", "@types/react@16 || 17 || 18", "@types/react@>=16", "@types/react@^18.0.21":
   version "18.0.21"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.21.tgz#b8209e9626bb00a34c76f55482697edd2b43cc67"
   integrity sha512-7QUCOxvFgnD5Jk8ZKlUAhVcRj7GuJRjnjjiY/IUBWKgOlnvDvTMLD4RTF7NPyVmbRhNrbomZiOepg7M/2Kj1mA==
@@ -3044,6 +3213,11 @@ buffer@^5.5.0:
   dependencies:
     base64-js "^1.3.1"
     ieee754 "^1.1.13"
+
+bulk-replace@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/bulk-replace/-/bulk-replace-0.0.1.tgz#f095682a896abd4b3d9e08de409cc222e213f9dd"
+  integrity sha512-IxLEnfsCYLjlpf6mG7SWpWgA4A8IAT5dAX3FxXHFn+6FTLf3ums771elQ74sj1BCOVanBf6esu0rEC6zgwfmIg==
 
 busboy@^1.0.0:
   version "1.6.0"
@@ -5144,6 +5318,14 @@ gatsby-parcel-config@0.15.1:
     "@parcel/transformer-js" "2.6.2"
     "@parcel/transformer-json" "2.6.2"
 
+gatsby-plugin-i18n-l10n@^4.21.0:
+  version "4.21.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-i18n-l10n/-/gatsby-plugin-i18n-l10n-4.21.0.tgz#7b87c8138673e53eb9bc9e223792ed50e630636c"
+  integrity sha512-j0AydDgOgwHu880CK8r365mbZhvHkQgXemC4Zj8ZxNiavbhKb9jYk7T3D3sEyDn9vjB3+hZG8mj5ZVXIRY6Iwg==
+  dependencies:
+    limax "^3.0.0"
+    path-browserify "^1.0.1"
+
 gatsby-plugin-image@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-2.24.0.tgz#965b6c82359f3f51bd8dbf976648f6a81a2c3d03"
@@ -5928,6 +6110,20 @@ header-case@^2.0.4:
     capital-case "^1.0.4"
     tslib "^2.0.3"
 
+hepburn@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/hepburn/-/hepburn-1.2.0.tgz#81d01bf3dc7ea83370fac5bbcbfa0f9f1a0f819f"
+  integrity sha512-xWjHb03dN/ivNcqG2vqA//sHQ0oapYGZ9QV/2TR7m2+cggxzoVpbDxZn9s/Zm1tF88/7a1IpdZyn00tNP5oABA==
+  dependencies:
+    bulk-replace "0.0.1"
+
+hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
+  integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
+  dependencies:
+    react-is "^16.7.0"
+
 hosted-git-info@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-3.0.8.tgz#6e35d4cc87af2c5f816e4cb9ce350ba87a3f370d"
@@ -6105,6 +6301,16 @@ internal-slot@^1.0.3:
     get-intrinsic "^1.1.0"
     has "^1.0.3"
     side-channel "^1.0.4"
+
+intl-messageformat@10.1.5:
+  version "10.1.5"
+  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-10.1.5.tgz#ec053e0367ee5e4d40a9448ddbb9fff143266a9d"
+  integrity sha512-bDQz81oQ6TkQp1pSnlBK36ahGL5/tLb0+3hSiG/1/SnVbz5NWPQTqaPx2cT7nmGujDrPn9pQ0ik8RWE8v1lzEw==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.12.0"
+    "@formatjs/fast-memoize" "1.2.6"
+    "@formatjs/icu-messageformat-parser" "2.1.8"
+    tslib "2.4.0"
 
 invariant@^2.2.3, invariant@^2.2.4:
   version "2.2.4"
@@ -6657,6 +6863,15 @@ lilconfig@^2.0.3:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/lilconfig/-/lilconfig-2.0.6.tgz#32a384558bd58af3d4c6e077dd1ad1d397bc69d4"
   integrity sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==
+
+limax@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/limax/-/limax-3.0.0.tgz#99beab12cc93036870b8a94a408652c657dcc846"
+  integrity sha512-7O14piibxAkJlQuAvhbJY5uubV7xszi1kQgnr5z+RkDJXyKYoStilqqpH8//LJq+HQpQN7TJmj3qxXzaEJOSfg==
+  dependencies:
+    "@napi-rs/pinyin" "^1.5.0"
+    hepburn "^1.2.0"
+    speakingurl "^14.0.1"
 
 lines-and-columns@^1.1.6:
   version "1.2.4"
@@ -8062,6 +8277,11 @@ password-prompt@^1.0.4:
     ansi-escapes "^3.1.0"
     cross-spawn "^6.0.5"
 
+path-browserify@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/path-browserify/-/path-browserify-1.0.1.tgz#d98454a9c3753d5790860f16f68867b9e46be1fd"
+  integrity sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==
+
 path-case@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/path-case/-/path-case-3.0.4.tgz#9168645334eb942658375c56f80b4c0cb5f82c6f"
@@ -8676,7 +8896,23 @@ react-error-overlay@^6.0.11:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.11.tgz#92835de5841c5cf08ba00ddd2d677b6d17ff9adb"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
 
-react-is@^16.13.1:
+react-intl@^6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-6.1.2.tgz#31ef6f0f2ed6e51910d4c1e7e27fb43fe7895b57"
+  integrity sha512-42Kkne7QzXjvljZQ3/ilWz5dHooG2cfgwmZbhtn90gZtUKzmyxRU11Os8nZvCuuLCW1vnecHTjsbBP+7Wpbp6g==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.12.0"
+    "@formatjs/icu-messageformat-parser" "2.1.8"
+    "@formatjs/intl" "2.4.2"
+    "@formatjs/intl-displaynames" "6.1.3"
+    "@formatjs/intl-listformat" "7.1.2"
+    "@types/hoist-non-react-statics" "^3.3.1"
+    "@types/react" "16 || 17 || 18"
+    hoist-non-react-statics "^3.3.2"
+    intl-messageformat "10.1.5"
+    tslib "2.4.0"
+
+react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -9421,6 +9657,11 @@ space-separated-tokens@^2.0.0:
   resolved "https://registry.yarnpkg.com/space-separated-tokens/-/space-separated-tokens-2.0.1.tgz#43193cec4fb858a2ce934b7f98b7f2c18107098b"
   integrity sha512-ekwEbFp5aqSPKaqeY1PGrlGQxPNaq+Cnx4+bE2D8sciBQrHpbwoBbawqTN2+6jPs9IdWxxiUcN0K2pkczD3zmw==
 
+speakingurl@^14.0.1:
+  version "14.0.1"
+  resolved "https://registry.yarnpkg.com/speakingurl/-/speakingurl-14.0.1.tgz#f37ec8ddc4ab98e9600c1c9ec324a8c48d772a53"
+  integrity sha512-1POYv7uv2gXoyGFpBCmpDVSNV74IfsWlDW216UPjbWufNf+bSU6GdbDsxdcxtfwb4xlI3yxzOTKClUosxARYrQ==
+
 split-on-first@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/split-on-first/-/split-on-first-1.1.0.tgz#f610afeee3b12bce1d0c30425e76398b78249a5f"
@@ -9891,15 +10132,15 @@ tsconfig-paths@^3.14.1:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
+tslib@2.4.0, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.4.0, tslib@~2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
+  integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
+
 tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
-
-tslib@^2.0.3, tslib@^2.1.0, tslib@^2.4.0, tslib@~2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
-  integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
 
 tsutils@^3.21.0:
   version "3.21.0"

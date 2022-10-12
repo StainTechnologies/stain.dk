@@ -1,12 +1,12 @@
 import * as React from "react"
-import { graphql, PageProps, Link } from "gatsby"
-//import {LocalizedLink as Link} from "gatsby-theme-i18n"
+import { graphql, PageProps, Link as oldLink } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import StainCover from "../components/stain-cover"
 
 import coverImage from "../images/placeholders/service1.webp"
+import { LocalizedLink } from "gatsby-plugin-i18n-l10n"
 
 interface StainServiceDataProps {
     site: {
@@ -98,25 +98,25 @@ function StainServiceCard(props: StainServiceCardProps, page: PageProps) {
     }
 
     return (
-        <Link to={props.post.childMdx.frontmatter.slug} itemProp="url" style={{ color: "black", textDecoration: "none", textAlign: "left" }} /*language={undefined}*/>
+        <LocalizedLink to={props.post.childMdx.frontmatter.slug} className="internalLink" activeClassName="internalLink">
             <div style={{ backgroundColor: background_color, padding: "2rem" }}>
                 {card()}
             </div>
-        </Link >
+        </LocalizedLink >
     )
 }
 
 export const Head = () => <Seo title="Services" />
 
 export const pageQuery = graphql`
-  {
+  query($locale: String!){
     site {
       siteMetadata {
         title
       }
     },
     allFile(
-    filter: {sourceInstanceName: {eq: "services"}, childMdx: {id: {ne: null}}}
+    filter: {sourceInstanceName: {eq: "services"}, childMdx: {id: {ne: null}, fields: {locale: {eq: $locale}}}}
     sort: {fields: childrenMdx___frontmatter___date, order: DESC}
     ) {
       nodes {

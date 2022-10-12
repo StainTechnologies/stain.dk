@@ -1,8 +1,8 @@
 import * as React from "react"
-import { graphql, PageProps, Link } from "gatsby"
+import { graphql, PageProps, Link as oldLink } from "gatsby"
 //import {LocalizedLink as Link} from "gatsby-theme-i18n"
 
-//import { useIntl } from "react-intl"
+import { useIntl } from "react-intl"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -13,6 +13,7 @@ import service1 from "../images/placeholders/service1.webp"
 import service2 from "../images/placeholders/service2.webp"
 
 import StainCover from "../components/stain-cover"
+import { LocalizedLink as Link } from "gatsby-plugin-i18n-l10n"
 
 type DataProps = {
   site: {
@@ -26,13 +27,13 @@ const BlogIndex: React.FC<PageProps<DataProps>> = ({
   data,
   location,
 }) => {
-  //const intl = useIntl()
+  const intl = useIntl()
   const siteTitle = data.site.siteMetadata?.title || `Title`
 
   if (true) {
     return (
       <Layout location={location} title={siteTitle}>
-        <StainCover title={/*intl.formatMessage({id: "welcome"})*/"welcome"} subtitle={/*intl.formatMessage({id: "welcomeSub"})*/"Welcome"} coverImage={coverImage} />
+        <StainCover title={intl.formatMessage({id: "welcome"})} subtitle={intl.formatMessage({id: "welcomeSub"})} coverImage={coverImage} />
         <div style={{ textAlign: "center" }}>
           <h3 style={{ textTransform: "uppercase" }}>Our Services</h3>
           <p>Professional development customized for your needs</p>
@@ -59,7 +60,7 @@ interface StainServiceCardProps {
 
 const StainServiceCard: React.FC<StainServiceCardProps> = ({ title, description, img, destination }) => {
   return (
-    <Link to={destination} style={{ display: "inherit", color: "black", textDecoration: "none" }} /*language={undefined}*/>
+    <Link to={destination} className="internalLink" activeClassName="internalLink">
       <div style={{ backgroundColor: "rgb(225,239,242)", width: "var(--maxWidth-xs)", marginLeft: 20, marginRight: 20, flex: 1 }}>
         <img src={img} style={{ width: "100%" }} alt="Laptop on a table" />
         <div style={{ paddingLeft: "3rem", paddingRight: "3rem", paddingBottom: "1rem" }}>
@@ -78,7 +79,7 @@ const StainAboutUs = () => {
         <h2 style={{ color: "white", fontSize: "5em", fontWeight: "normal", width: "50%" }}>Our story</h2>
         <br />
         <hr/>
-        <Link style={{ color: "white" }} to="/about" /*language={undefined}*/>Read more here</Link>
+        <Link to="/about" className="internalLink white" activeClassName="internalLink white">Read more here</Link>
       </div>
       <div style={{ flex: 1, padding: "5rem 10rem", textAlign: "left" }}>
         <h3>Get to Know Us</h3>

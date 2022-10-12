@@ -4,6 +4,9 @@ import * as React from "react"
 import logo from "../images/stain_logo.png"
 import gatsbyLogo from "../images/gatsby-icon.png"
 import { Link } from "gatsby"
+import { LocalizedLink, useI18nL10nContext } from "gatsby-plugin-i18n-l10n"
+import { MDXProvider } from "@mdx-js/react"
+import StainCover from "./stain-cover"
 
 interface LayoutProps {
   location: any,
@@ -12,23 +15,35 @@ interface LayoutProps {
 }
 
 const Layout = (props: LayoutProps) => {
-  //const { locale } = useLocalization()
+  const locale = useI18nL10nContext().prefix
   let header
 
-  //let originalLocation = location.pathname.replace("/" + locale, "")
+  let slug = location.pathname;
+
+  console.log(slug)
+
+  if (slug.endsWith("/")) {
+    slug = slug.substring(0, slug.length - 1)
+    console.log(slug)
+  }
+
+  let originalLocation = slug.replace("/" + locale, "")
+  if(originalLocation === "") { //Causes issues for DA but not for EN
+    originalLocation = "/"
+  }
 
   header = (
     <h1 className="main-heading">
-      <Link to="/" /*language={locale}*/>
-        <StainHeader location={location} title={props.title} />
-      </Link>
+      <LocalizedLink to="/" className="internalLink" activeClassName="internalLink">
+        <StainHeader location={originalLocation} title={props.title} />
+      </LocalizedLink>
     </h1>
   )
 
   return (
     <div className="global-wrapper">
       <header className="global-header">{header}</header>
-      <main>{props.children}</main>
+      <main><MDXProvider components={{StainCover}}>{props.children}</MDXProvider></main>
       <footer><StainFooter /></footer>
     </div>
   )
@@ -43,8 +58,8 @@ const StainHeader = (props: {location: any, title: string}) => {
         <StainHeaderNavigateLink title="Services" to="/services"></StainHeaderNavigateLink>
         <StainHeaderNavigateLink title="About" to="/about"></StainHeaderNavigateLink>
         <StainHeaderNavigateLink title="Contact" to="/contact"></StainHeaderNavigateLink>
-        <Link to={props.location} /*language="da"*/ style={{color: "black", marginRight: 5}}>🇩🇰</Link>
-        <Link to={props.location} /*language="en"*/ style={{color: "black"}}>🇬🇧</Link>
+        <Link to={"/da" + props.location} style={{color: "black", marginRight: 5}}>🇩🇰</Link>
+        <Link to={props.location} style={{color: "black"}}>🇬🇧</Link>
       </div>
     </div>
   )
