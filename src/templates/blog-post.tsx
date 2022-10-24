@@ -32,11 +32,11 @@ function MDXTemplate(props: MDXDataProps) {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <div style={{ display: "flex", justifyContent: "center", paddingTop: "2rem" }}>
-        <div style={{ maxWidth: 900 }}>
+      <div className="flex justify-center py-8 mx-10">
+        <div className="max-w-4xl bg-red-100 p-10">
           <StainCover coverImage={post.frontmatter.thumbnail.publicURL} contain></StainCover>
           <article
-            className="blog-post"
+            className="mt-8"
             itemScope
             itemType="http://schema.org/Article"
           >

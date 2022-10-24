@@ -1,5 +1,4 @@
 import * as React from "react"
-import {Property} from "csstype"
 
 interface StainCoverProps {
     title?: String,
@@ -9,18 +8,14 @@ interface StainCoverProps {
 }
 
 function StainCover(props: StainCoverProps) {
-    let objectFit: Property.ObjectFit = props.contain ? "contain" : "cover"
-    let opacity = props.contain ? "100%" : "50%"
-    let background_color = props.contain ? "transparent" : "black"
-
     return (
-        <div style={{ height: "75vh", width: "100%", backgroundColor: background_color }}>
-            <img src={props.coverImage} style={{ height: "100%", width: "100%", objectFit: objectFit, opacity: opacity }} alt="Family using tablet in a couch" />
-            <div style={{ position: "absolute", top: "50%", left: "50%", transform: `translate(-50%, -50%)`, textAlign: "center" }}>
-                <h1 style={{ color: "white", fontWeight: "normal", fontSize: "4em", textTransform: "uppercase" }}>
+        <div className={"w-full relative" + (props.contain ? " bg-transparent" : " bg-black")}>
+            <img src={props.coverImage} className={"w-full" + (props.contain ? " object-contain" : " h-[65vh] object-cover opacity-50")} alt="Family using tablet in a couch" />
+            <div className="absolute top-1/2 transform -translate-y-1/2 w-full text-center">
+                <h1 className="text-4xl md:text-5xl text-white font-bold uppercase mb-1">
                     {props.title}
                 </h1>
-                <h5 style={{ color: "white", fontWeight: "normal" }}>{props.subtitle}</h5>
+                <h5 className="text-lg md:text-xl text-white font-normal">{props.subtitle}</h5>
             </div>
         </div>
     )

@@ -28,21 +28,23 @@ const StainServices: React.FC<PageProps<StainServiceDataProps>> = ({ data, locat
     return (
         <Layout location={location} title={siteTitle}>
             <StainCover title="Our Services" subtitle="We offer a wide range of software services to help you accellerate your business" coverImage={coverImage}></StainCover>
-            <div style={{ alignContent: "center", textAlign: "center" }}>
-                <h1>Our Services</h1>
-                <p>
-                    We offer a wide range of software services to help accellerate your business.
-                    <br />
-                    Take a look at some of our service below to learn more about what we can offer you
-                </p>
-                <div style={{}}>
-                    {posts.map((post: any) => {
-                        const title: string = post.childMdx.frontmatter.title || post.childMdx.frontmatter.slug
-                        alternate = alternate === false
-                        return (
-                            <StainServiceCard title={title} post={post} left={alternate} />
-                        )
-                    })}
+            <div className="flex flex-col items-center">
+                <div className="text-center mt-8 max-w-6xl">
+                    <h1 className="text-4xl font-bold mb-2">Our Services</h1>
+                    <p className="text-md mb-8">
+                        We offer a wide range of software services to help accellerate your business.
+                        <br />
+                        Take a look at some of our service below to learn more about what we can offer you
+                    </p>
+                    <div style={{}}>
+                        {posts.map((post: any) => {
+                            const title: string = post.childMdx.frontmatter.title || post.childMdx.frontmatter.slug
+                            alternate = alternate === false
+                            return (
+                                <StainServiceCard title={title} post={post} left={alternate} />
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         </Layout>
@@ -58,23 +60,23 @@ interface StainServiceCardProps {
 }
 
 function StainServiceCard(props: StainServiceCardProps, page: PageProps) {
-    const background_color = props.left ? "rgb(255,239,242)" : "white"
+    const background_color = props.left ? "bg-red-100" : "bg-white"
 
     const imageDiv = () => {
         return (
-            <div style={{ display: "flex", flex: 1, height: "50%" }}>
-                <img src={props.post.childMdx.frontmatter.thumbnail.publicURL} style={{ width: "100%", objectFit: "contain" }} alt="Laptop on a table" />
+            <div className="flex flex-1 h-1/2">
+                <img src={props.post.childMdx.frontmatter.thumbnail.publicURL} className="w-full object-contain" alt="Laptop on a table" />
             </div>
         )
     }
 
     const textDiv = () => {
         return (
-            <div style={{ flex: 1, paddingLeft: "3rem", paddingRight: "3rem", paddingBottom: "1rem", height: "50%" }}>
-                <h5>
+            <div className="flex-1 px-12 h-1/2">
+                <h5 className="text-3xl font-bold mb-4">
                     <span itemProp="headline">{props.title}</span>
                 </h5>
-                <p itemProp="description">{props.post.childMdx.excerpt}</p>
+                <p className="text-md" itemProp="description">{props.post.childMdx.excerpt}</p>
             </div>
         )
     }
@@ -82,14 +84,14 @@ function StainServiceCard(props: StainServiceCardProps, page: PageProps) {
     const card = () => {
         if (props.left) {
             return (
-                <div style={{ display: "flex", }}>
+                <div className="flex flex-col md:flex-row gap-4">
                     {imageDiv()}
                     {textDiv()}
                 </div>
             )
         } else {
             return (
-                <div style={{ display: "flex", }}>
+                <div className="flex flex-col-reverse md:flex-row gap-4">
                     {textDiv()}
                     {imageDiv()}
                 </div>
@@ -98,8 +100,8 @@ function StainServiceCard(props: StainServiceCardProps, page: PageProps) {
     }
 
     return (
-        <LocalizedLink to={props.post.childMdx.frontmatter.slug} className="internalLink" activeClassName="internalLink">
-            <div style={{ backgroundColor: background_color, padding: "2rem" }}>
+        <LocalizedLink to={props.post.childMdx.frontmatter.slug}>
+            <div className={background_color + " p-8"}>
                 {card()}
             </div>
         </LocalizedLink >

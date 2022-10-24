@@ -1,12 +1,12 @@
 import * as React from "react"
 //import {LocalizedLink as Link, useLocalization} from "gatsby-theme-i18n"
 
-import logo from "../images/stain_logo.png"
 import gatsbyLogo from "../images/gatsby-icon.png"
 import { Link } from "gatsby"
 import { LocalizedLink, useI18nL10nContext } from "gatsby-plugin-i18n-l10n"
-import { MDXProvider } from "@mdx-js/react"
-import StainCover from "./stain-cover"
+import LanguageSelector from "./LanguageSelector"
+import { DesktopNavigation, MobileNavigation } from "./Navigation"
+import MDXSetup from "./MDXSetup"
 
 interface LayoutProps {
   location: any,
@@ -16,67 +16,48 @@ interface LayoutProps {
 
 const Layout = (props: LayoutProps) => {
   const locale = useI18nL10nContext().prefix
-  let header
-
-  let slug = location.pathname;
-
-  console.log(slug)
-
-  if (slug.endsWith("/")) {
-    slug = slug.substring(0, slug.length - 1)
-    console.log(slug)
-  }
-
-  let originalLocation = slug.replace("/" + locale, "")
-  if(originalLocation === "") { //Causes issues for DA but not for EN
-    originalLocation = "/"
-  }
-
-  header = (
-    <h1 className="main-heading">
-      <LocalizedLink to="/" className="internalLink" activeClassName="internalLink">
-        <StainHeader location={originalLocation} title={props.title} />
-      </LocalizedLink>
-    </h1>
-  )
 
   return (
-    <div className="global-wrapper">
-      <header className="global-header">{header}</header>
-      <main><MDXProvider components={{StainCover}}>{props.children}</MDXProvider></main>
-      <footer><StainFooter /></footer>
+    <div className="min-w-[320px]">
+      <StainHeader title={props.title} />
+      <main><MDXSetup>{props.children}</MDXSetup></main>
+      <StainFooter />
     </div>
   )
 }
 
-const StainHeader = (props: {location: any, title: string}) => {
+const StainHeader = (props: { title: string }) => {
   return (
-    <div>
-      <img src={logo} style={{ height: "1em", marginRight: 20 }} alt="Logo of Stain Technologies"></img>{props.title}
-      <div style={{ float: "right" }}>
-        <StainHeaderNavigateLink title="Home" to="/"></StainHeaderNavigateLink>
-        <StainHeaderNavigateLink title="Services" to="/services"></StainHeaderNavigateLink>
-        <StainHeaderNavigateLink title="About" to="/about"></StainHeaderNavigateLink>
-        <StainHeaderNavigateLink title="Contact" to="/contact"></StainHeaderNavigateLink>
-        <Link to={"/da" + props.location} style={{color: "black", marginRight: 5}}>🇩🇰</Link>
-        <Link to={props.location} style={{color: "black"}}>🇬🇧</Link>
+    <header className="pointer-events-none relative z-50 flex flex-col mb-6 mx-4">
+      <div className="top-0 z-10 pt-6">
+        <div className="relative flex items-center gap-4">
+          <LocalizedLink className="pointer-events-auto" to="/">
+            <div className="hidden sm:flex text-4xl font-bold flex-grow">
+              STAIN Technologies
+            </div>
+            <div className="flex sm:hidden text-4xl font-bold flex-grow">
+              STAIN
+            </div>
+          </LocalizedLink>
+          <div className="flex flex-1 justify-end">
+            <DesktopNavigation className="pointer-events-auto hidden md:flex text-xl gap-4" />
+            <MobileNavigation className="pointer-events-auto md:hidden flex text-xl" />
+          </div>
+          <div className="flex justify-end pointer-events-auto">
+            <LanguageSelector />
+          </div>
+        </div>
       </div>
-    </div>
-  )
-}
-
-const StainHeaderNavigateLink = (props: { title: string, to: any }) => {
-  return (
-    <Link to={props.to} style={{ fontSize: "0.5em", marginLeft: 10, marginRight: 10, color: "black" }} /*language={undefined}*/>{props.title}</Link>
+    </header>
   )
 }
 
 const StainFooter = () => {
   return (
-    <div>
-      <div style={{ display: "flex", padding: "0px 2rem" }}>
-        <div style={{ flex: 1, padding: "1rem", marginRight: 5 }}>
-          <h2>Stain Technologies</h2>
+    <footer className="w-full">
+      <div className="flex p-8">
+        <div className="flex-1 p-2 mr-2 text-md">
+          <h2 className="text-lg font-bold">Stain Technologies</h2>
           <br />
           Vedbendvej 22, 1.
           <br />
@@ -88,34 +69,37 @@ const StainFooter = () => {
           <br /><br />
           <b>CVR:</b> 41500867
         </div>
-        <div style={{ flex: 1, padding: "1rem", marginRight: 5, marginLeft: 5 }}>
-
-        </div>
-        <div style={{ flex: 1, padding: "1rem", marginRight: 5, marginLeft: 5, textAlign: "right" }}>
-          <h2>Shortcuts</h2>
+        <div className="hidden md:flex-1" />
+        <div className="flex-1 text-right p-2 ml-2 text-md">
+          <h2 className="text-lg font-bold">Shortcuts</h2>
           <br />
-          <Link to="/services" style={{ color: "black" }} /*language={undefined}*/>
+          <Link to="/services">
             Our Services
           </Link>
           <br />
-          <Link to="/about" style={{ color: "black" }} /*language={undefined}*/>
+          <Link to="/about">
             About Us
           </Link>
           <br />
-          <Link to="/contact" style={{ color: "black" }} /*language={undefined}*/>
+          <Link to="/contact">
             Get In Contact
           </Link>
         </div>
       </div>
-      <hr />
-      <div style={{ display: "flex", justifyContent: "center", }}>
-        <p style={{ fontSize: "0.75em", verticalAlign: "middle" }}>
-          © Stain Technologies {new Date().getFullYear()} - Static site powered by
-          {` `}
-          <a href="https://www.gatsbyjs.com"><img src={gatsbyLogo} style={{ height: "1em", marginLeft: 2, verticalAlign: "middle" }} alt="Gatsby"></img></a>
-        </p>
+      <hr className="mb-2" />
+      <div className="flex justify-center mb-2">
+        <div className="flex gap-1 text-xs flex-col md:flex-row text-center">
+          <p>© Stain Technologies {new Date().getFullYear()}</p>
+          <p className="hidden md:block">-</p>
+          <div className="flex gap-1 text-xs">
+            <p>Static site powered by</p>
+            <a href="https://www.gatsbyjs.com">
+              <img src={gatsbyLogo} alt="Gatsby" className="h-4" />
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
+    </footer>
   )
 }
 

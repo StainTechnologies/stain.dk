@@ -13,7 +13,7 @@ import service1 from "../images/placeholders/service1.webp"
 import service2 from "../images/placeholders/service2.webp"
 
 import StainCover from "../components/stain-cover"
-import { LocalizedLink as Link } from "gatsby-plugin-i18n-l10n"
+import { LocalizedLink } from "gatsby-plugin-i18n-l10n"
 
 type DataProps = {
   site: {
@@ -33,14 +33,16 @@ const BlogIndex: React.FC<PageProps<DataProps>> = ({
   if (true) {
     return (
       <Layout location={location} title={siteTitle}>
-        <StainCover title={intl.formatMessage({id: "welcome"})} subtitle={intl.formatMessage({id: "welcomeSub"})} coverImage={coverImage} />
-        <div style={{ textAlign: "center" }}>
-          <h3 style={{ textTransform: "uppercase" }}>Our Services</h3>
-          <p>Professional development customized for your needs</p>
-          <div style={{ display: "flex", marginBottom: "2rem", justifyContent: "center"}}>
-            <StainServiceCard title="System and app development" description="Experienced developers able to deliver quality systems quickly." img={service0} destination="/services/system-and-app-development" />
-            <StainServiceCard title="System maintenance" description="Suitable for freeing up your software engineers/Suitable for maintaining your system by keeping it updated and up and running." img={service1} destination="/services/system-maintenance" />
-            <StainServiceCard title="General consultancy" description="A perfect opportunity to get a second pair of eyes to help optimize your new project or ideas." img={service2} destination="/services/general-consultancy"/>
+        <StainCover title={intl.formatMessage({ id: "welcome" })} subtitle={intl.formatMessage({ id: "welcomeSub" })} coverImage={coverImage} />
+        <div className="flex flex-col items-center">
+          <div className="text-center mt-8 max-w-7xl">
+            <h3 className="text-3xl font-bold uppercase my-2">Our Services</h3>
+            <p className="text-md mb-2">Professional development customized for your needs</p>
+            <div className="flex flex-col md:flex-row m-8 justify-center gap-8 lg:gap-16 mb-16">
+              <StainServiceCard title="System and app development" description="Experienced developers able to deliver quality systems quickly." img={service0} destination="/services/system-and-app-development" />
+              <StainServiceCard title="System maintenance" description="Suitable for freeing up your software engineers/Suitable for maintaining your system by keeping it updated and up and running." img={service1} destination="/services/system-maintenance" />
+              <StainServiceCard title="General consultancy" description="A perfect opportunity to get a second pair of eyes to help optimize your new project or ideas." img={service2} destination="/services/general-consultancy" />
+            </div>
           </div>
           <StainAboutUs />
         </div>
@@ -60,29 +62,27 @@ interface StainServiceCardProps {
 
 const StainServiceCard: React.FC<StainServiceCardProps> = ({ title, description, img, destination }) => {
   return (
-    <Link to={destination} className="internalLink" activeClassName="internalLink">
-      <div style={{ backgroundColor: "rgb(225,239,242)", width: "var(--maxWidth-xs)", marginLeft: 20, marginRight: 20, flex: 1 }}>
-        <img src={img} style={{ width: "100%" }} alt="Laptop on a table" />
-        <div style={{ paddingLeft: "3rem", paddingRight: "3rem", paddingBottom: "1rem" }}>
-          <h5>{title}</h5>
-          <p>{description}</p>
-        </div>
+    <LocalizedLink to={destination} className="flex flex-col bg-slate-300 flex-1">
+      <img src={img} className="w-full" alt="Laptop on a table" />
+      <div className="flex flex-col flex-grow justify-center mt-4 mx-6 mb-8">
+        <h5 className="text-xl font-bold mb-2">{title}</h5>
+        <p className="text-md">{description}</p>
       </div>
-    </Link>
+    </LocalizedLink>
   )
 }
 
 const StainAboutUs = () => {
   return (
-    <div style={{ display: "flex", backgroundColor: "darkgray" }}>
-      <div style={{ flex: 1, backgroundColor: "black", padding: "5rem 10rem", textAlign: "left" }}>
-        <h2 style={{ color: "white", fontSize: "5em", fontWeight: "normal", width: "50%" }}>Our story</h2>
-        <br />
-        <hr/>
-        <Link to="/about" className="internalLink white" activeClassName="internalLink white">Read more here</Link>
+    <div className="flex flex-col md:flex-row bg-slate-300 w-full">
+      <div className="flex-1 bg-black text-left p-8">
+        <h2 className="text-8xl text-white text-ellipsis">Our</h2>
+        <h2 className="text-8xl text-white text-ellipsis">story</h2>
+        <hr className="mb-4 mt-8" />
+        <LocalizedLink to="/about" className="internalLink text-white text-md">Read more here</LocalizedLink>
       </div>
-      <div style={{ flex: 1, padding: "5rem 10rem", textAlign: "left" }}>
-        <h3>Get to Know Us</h3>
+      <div className="flex-1 p-8 text-left text-md">
+        <h3 className="text-2xl font-bold mb-2">Get to Know Us</h3>
         STAIN was founded by a student at SDU university in Odense, Denmark, where the founder discovered a large amount of students being neglected by major companies. Since then, the company has been dedicated to providing quality software delivered as quickly as possible, by wo
       </div>
     </div>

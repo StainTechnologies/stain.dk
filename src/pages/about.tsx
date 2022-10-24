@@ -7,17 +7,18 @@ import Seo from "../components/seo"
 import StainCover from "../components/stain-cover"
 
 import coverImage from "../images/placeholders/service1.webp"
+import { LocalizedLink } from "gatsby-plugin-i18n-l10n"
 
 interface StainAboutDataProps {
     site: {
-      siteMetadata: {
-        title: string
-      }
+        siteMetadata: {
+            title: string
+        }
     },
     allFile: {
         nodes: any
     }
-  }
+}
 
 const StainAbout: React.FC<PageProps<StainAboutDataProps>> = ({ data, location }) => {
     const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -28,28 +29,30 @@ const StainAbout: React.FC<PageProps<StainAboutDataProps>> = ({ data, location }
     return (
         <Layout location={location} title={siteTitle}>
             <StainCover title="About Us" subtitle="We offer a wide range of software services to help you accellerate your business" coverImage={coverImage}></StainCover>
-            <div style={{ alignContent: "center", textAlign: "center" }}>
-                <h1>About Us</h1>
-                <p>
-                    We offer a wide range of software services to help accellerate your business.
-                    <br />
-                    Take a look at who we are below
-                </p>
-                <hr/>
-                <h2>Our story</h2>
-                <p>
-                    STAIN was founded by a student at SDU university in Odense, Denmark, where the founder discovered a large amount of students being neglected by major companies. Since then, the company has been dedicated to providing quality software delivered as quickly as possible, by wo
-                </p>
-                <hr/>
-                <h2>Get to know us</h2>
-                <div style={{}}>
-                    {posts.map((post: any) => {
-                        const title = post.childMdx.frontmatter.title || post.childMdx.frontmatter.slug
-                        alternate = alternate === false
-                        return (
-                            <StainAboutCard title={title} post={post} left={alternate} />
-                        )
-                    })}
+            <div className="flex flex-col items-center">
+                <div className="text-center mt-8 max-w-6xl">
+                    <h1 className="text-4xl font-bold mb-2">About Us</h1>
+                    <p className="text-md mb-8">
+                        We offer a wide range of software services to help accellerate your business.
+                        <br />
+                        Take a look at who we are below
+                    </p>
+                    <hr className="mb-4" />
+                    <h2 className="text-2xl font-semibold mb-2">Our story</h2>
+                    <p className="text-md mb-8">
+                        STAIN was founded by a student at SDU university in Odense, Denmark, where the founder discovered a large amount of students being neglected by major companies. Since then, the company has been dedicated to providing quality software delivered as quickly as possible, by wo
+                    </p>
+                    <hr className="mb-4" />
+                    <h2 className="text-2xl font-semibold mb-8">Get to know us</h2>
+                    <div style={{}}>
+                        {posts.map((post: any) => {
+                            const title: string = post.childMdx.frontmatter.title || post.childMdx.frontmatter.slug
+                            alternate = alternate === false
+                            return (
+                                <StainAboutCard title={title} post={post} left={alternate} />
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         </Layout>
@@ -65,23 +68,23 @@ interface StainAboutCardProps {
 }
 
 function StainAboutCard(props: StainAboutCardProps, page: PageProps) {
-    const background_color = props.left ? "rgb(255,239,242)" : "white"
+    const background_color = props.left ? "bg-red-100" : "bg-white"
 
     const imageDiv = () => {
         return (
-            <div style={{ display: "flex", flex: 1, height: "50%" }}>
-                <img src={props.post.childMdx.frontmatter.thumbnail.publicURL} style={{ width: "100%", objectFit: "contain" }} alt="Laptop on a table" />
+            <div className="flex flex-1 h-1/2">
+                <img src={props.post.childMdx.frontmatter.thumbnail.publicURL} className="w-full object-contain" alt="Laptop on a table" />
             </div>
         )
     }
 
     const textDiv = () => {
         return (
-            <div style={{ flex: 1, paddingLeft: "3rem", paddingRight: "3rem", paddingBottom: "1rem", height: "50%" }}>
-                <h5>
+            <div className="flex-1 px-12 h-1/2">
+                <h5 className="text-3xl font-bold mb-4">
                     <span itemProp="headline">{props.title}</span>
                 </h5>
-                <p itemProp="description">{props.post.childMdx.excerpt}</p>
+                <p className="text-md" itemProp="description">{props.post.childMdx.excerpt}</p>
             </div>
         )
     }
@@ -89,14 +92,14 @@ function StainAboutCard(props: StainAboutCardProps, page: PageProps) {
     const card = () => {
         if (props.left) {
             return (
-                <div style={{ display: "flex", }}>
+                <div className="flex flex-col md:flex-row gap-4">
                     {imageDiv()}
                     {textDiv()}
                 </div>
             )
         } else {
             return (
-                <div style={{ display: "flex", }}>
+                <div className="flex flex-col-reverse md:flex-row gap-4">
                     {textDiv()}
                     {imageDiv()}
                 </div>
@@ -105,11 +108,11 @@ function StainAboutCard(props: StainAboutCardProps, page: PageProps) {
     }
 
     return (
-        <Link to={props.post.childMdx.frontmatter.slug} itemProp="url" style={{ color: "black", textDecoration: "none", textAlign: "left" }} /*language={undefined}*/>
-            <div style={{ backgroundColor: background_color, padding: "2rem" }}>
+        <LocalizedLink to={props.post.childMdx.frontmatter.slug}>
+            <div className={background_color + " p-8"}>
                 {card()}
             </div>
-        </Link >
+        </LocalizedLink >
     )
 }
 
