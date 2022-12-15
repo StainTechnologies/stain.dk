@@ -35,16 +35,18 @@ const BlogIndex: React.FC<PageProps<DataProps>> = ({
       <Layout location={location} title={siteTitle}>
         <StainCover title={intl.formatMessage({ id: "welcome" })} subtitle={intl.formatMessage({ id: "welcomeSub" })} coverImage={coverImage} />
         <div className="flex flex-col items-center">
-          <div className="text-center mt-8 max-w-7xl">
-            <h3 className="text-3xl font-bold uppercase my-2">Our Services</h3>
-            <p className="text-md mb-2">Professional development customized for your needs</p>
+          <div className="text-center mt-16 max-w-7xl">
+            <h3 className="text-3xl font-bold uppercase my-2">{intl.formatMessage({ id: "serviceHeading" })}</h3>
+            <p className="text-md mb-2">{intl.formatMessage({ id: "serviceSubHeading" })}</p>
             <div className="flex flex-col md:flex-row m-8 justify-center gap-8 lg:gap-16 mb-16">
               <StainServiceCard title="System and app development" description="Experienced developers able to deliver quality systems quickly." img={service0} destination="/services/system-and-app-development" />
               <StainServiceCard title="System maintenance" description="Suitable for freeing up your software engineers/Suitable for maintaining your system by keeping it updated and up and running." img={service1} destination="/services/system-maintenance" />
               <StainServiceCard title="General consultancy" description="A perfect opportunity to get a second pair of eyes to help optimize your new project or ideas." img={service2} destination="/services/general-consultancy" />
             </div>
           </div>
+          <div className="flex m-8">
           <StainAboutUs />
+          </div>
         </div>
       </Layout>
     )
@@ -62,29 +64,30 @@ interface StainServiceCardProps {
 
 const StainServiceCard: React.FC<StainServiceCardProps> = ({ title, description, img, destination }) => {
   return (
-    <LocalizedLink to={destination} className="flex flex-col bg-slate-300 flex-1">
+    <LocalizedLink to={destination} className="flex flex-col bg-sky-50 flex-1 rounded-xl overflow-hidden drop-shadow-xl">
       <img src={img} className="w-full" alt="Laptop on a table" />
       <div className="flex flex-col flex-grow justify-center mt-4 mx-6 mb-8">
+        <div className="flex-3">
         <h5 className="text-xl font-bold mb-2">{title}</h5>
+        </div>
+        <div className="flex-1">
         <p className="text-md">{description}</p>
+        </div>
       </div>
     </LocalizedLink>
   )
 }
 
 const StainAboutUs = () => {
+  const intl = useIntl()
+
   return (
-    <div className="flex flex-col md:flex-row bg-slate-300 w-full">
-      <div className="flex-1 bg-black text-left p-8">
-        <h2 className="text-8xl text-white text-ellipsis">Our</h2>
-        <h2 className="text-8xl text-white text-ellipsis">story</h2>
-        <hr className="mb-4 mt-8" />
-        <LocalizedLink to="/about" className="internalLink text-white text-md">Read more here</LocalizedLink>
+    <div className="bg-red-50 w-full overflow-hidden rounded-xl shadow-inner">
+      <div className="flex-1 text-center px-8 pt-8 text-black">
+        <h2 className="text-3xl font-bold text-ellipsis pb-4">{intl.formatMessage({ id: "storyHeading" })}</h2>
+        {intl.formatMessage({ id: "storyText" })}
       </div>
-      <div className="flex-1 p-8 text-left text-md">
-        <h3 className="text-2xl font-bold mb-2">Get to Know Us</h3>
-        STAIN was founded by a student at SDU university in Odense, Denmark, where the founder discovered a large amount of students being neglected by major companies. Since then, the company has been dedicated to providing quality software delivered as quickly as possible, by wo
-      </div>
+      <hr className="m-8 border-black" />
     </div>
   )
 }
