@@ -46,9 +46,11 @@ export function MobileNavigation(props: PropsWithChildren<{ className?: string }
     const intl = useIntl()
     return (
         <Popover {...props}>
-            <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur">
-                {intl.formatMessage({ id: "menu" })}
-                <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700" />
+            <Popover.Button className="group flex items-center rounded-full bg-white px-4 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur">
+                <div className="text-sm font-medium text-blue-300 group-hover:text-zinc-300">
+                    {intl.formatMessage({ id: "menu" })}
+                </div>
+                <ChevronDownIcon className="ml-3 h-auto w-2 stroke-blue-300 group-hover:stroke-zinc-300" />
             </Popover.Button>
             <Transition.Root>
                 <Transition.Child
@@ -60,7 +62,7 @@ export function MobileNavigation(props: PropsWithChildren<{ className?: string }
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                 >
-                    <Popover.Overlay className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm" />
+                    <Popover.Overlay className="" />
                 </Transition.Child>
                 <Transition.Child
                     as={Fragment}
@@ -73,7 +75,7 @@ export function MobileNavigation(props: PropsWithChildren<{ className?: string }
                 >
                     <Popover.Panel
                         focus
-                        className="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5"
+                        className="fixed inset-x-4 top-20 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5"
                     >
                         <div className="flex flex-row-reverse items-center justify-between">
                             <Popover.Button aria-label={intl.formatMessage({ id: "aria-close-menu" })} className="-m-1 p-1">
@@ -86,14 +88,7 @@ export function MobileNavigation(props: PropsWithChildren<{ className?: string }
                         <nav className="mt-6">
                             <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800">
                                 <MobileNavItem><LocalizedLink to={"/"}>{intl.formatMessage({ id: "home" })}</LocalizedLink></MobileNavItem>
-                                <MobileNavItem><LocalizedLink to={"/services/"}>{intl.formatMessage({ id: "services" })}</LocalizedLink></MobileNavItem>
-                                <MobileNavItem><LocalizedLink to={"/about/"}>{intl.formatMessage({ id: "about" })}</LocalizedLink></MobileNavItem>
                                 <MobileNavItem><LocalizedLink to={"/contact/"}>{intl.formatMessage({ id: "contact" })}</LocalizedLink></MobileNavItem>
-                                {/*
-                  <MobileNavItem href="/projects">Projects</MobileNavItem>
-                  <MobileNavItem href="/speaking">Speaking</MobileNavItem>
-                  <MobileNavItem href="/uses">Uses</MobileNavItem>
-                  */}
                             </ul>
                         </nav>
                     </Popover.Panel>
@@ -104,12 +99,12 @@ export function MobileNavigation(props: PropsWithChildren<{ className?: string }
 }
 
 export function DesktopNavigation(props: PropsWithChildren<{className?: string}>) {
+    const intl = useIntl()
+
     return (
         <div {...props}>
-            <LocalizedLink to="/">Home</LocalizedLink>
-            <LocalizedLink to="/services">Services</LocalizedLink>
-            <LocalizedLink to="/about">About</LocalizedLink>
-            <LocalizedLink to="/contact">Contact</LocalizedLink>
+            <LocalizedLink to="/" className="text-white text-base">{intl.formatMessage({ id: "home" })}</LocalizedLink>
+            <LocalizedLink to="/contact" className="text-white text-base">{intl.formatMessage({ id: "contact" })}</LocalizedLink>
         </div>
     )
 }

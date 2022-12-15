@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import StainCover from "../components/stain-cover"
 
-import coverImage from "../images/placeholders/service1.webp"
+import coverImage from "../images/graphql-image.jpg"
 import { LocalizedLink } from "gatsby-plugin-i18n-l10n"
 
 interface StainAboutDataProps {

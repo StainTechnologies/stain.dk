@@ -1,19 +1,21 @@
 import type { GatsbyConfig } from "gatsby";
 
-import English from "./i18n/react-intl/en";
-import Danish from "./i18n/react-intl/da";
+import English from "./i18n/en.json"
+import Danish from "./i18n/dk.json"
+
+const siteURL: string = process.env.URL || "https://www.stain.dk"
 
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Stain Technologies`,
-    siteUrl: `https://www.stain.dk`,
+    siteUrl: siteURL,
     description: `Stain Technologies`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
-  plugins: ["gatsby-plugin-image", "gatsby-plugin-sitemap", {
+  plugins: ["gatsby-plugin-image", {
     resolve: 'gatsby-plugin-manifest',
     options: {
       "icon": "src/images/icon.png"
@@ -79,6 +81,32 @@ const config: GatsbyConfig = {
         '/pages' // /pages/products/gummibears becomes /products/gummibears
       ]
     },
+  }, {
+    resolve: `gatsby-plugin-sitemap`,
+    options: {
+      excludes: ["/**/404", "/**/404.html"],
+      query: `{
+        allSitePage(filter: {context: {prefix: {eq: "en"}}}) {
+        nodes {
+          path
+        }
+      }
+    }`,
+      resolveSiteUrl: () => siteURL,
+      serialize: (props: {path: any}) => {
+          return {
+            url: siteURL + props.path,
+            changefreq: 'daily',
+            priority: 0.7,
+            links: [
+              { lang: 'en', url: siteURL + props.path },
+              { lang: 'da', url: `${siteURL}/da${props.path}` },
+              // The default in case page for user's language is not localized.
+              { lang: 'x-default', url: siteURL + props.path }
+            ]
+          };
+        }
+    }
   }]
 };
 

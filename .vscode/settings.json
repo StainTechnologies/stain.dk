@@ -1,5 +1,7 @@
 {
     "i18n-ally.localesPaths": [
-        "i18n\react-intl"
-    ]
+        "i18n",
+        "../../../../Programming/stain.dk/stain.dk/i18n"
+    ],
+    "i18n-ally.keystyle": "nested"
 }

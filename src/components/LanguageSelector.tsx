@@ -43,8 +43,8 @@ export default function LanguageDropdown() {
         <div className="">
             <Menu as="div" className="relative inline-block text-left">
                 <div>
-                    <Menu.Button className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition">
-                        <LanguageIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700"/>
+                    <Menu.Button className="group rounded-full bg-white px-4 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition">
+                        <LanguageIcon className="h-6 w-6 fill-white stroke-blue-300 transition group-hover:stroke-zinc-300"/>
                     </Menu.Button>
                 </div>
                 <Transition
@@ -57,7 +57,7 @@ export default function LanguageDropdown() {
                     leaveTo="transform opacity-0 scale-95"
                 >
                     <Menu.Items className="absolute right-0 mt-2 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transition">
-                        <div className="px-1 py-1">
+                        <div className="px-4 py-2">
                             <Menu.Item>
                                 {({ active }) => (
                                     <button

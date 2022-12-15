@@ -7,6 +7,7 @@ import { LocalizedLink, useI18nL10nContext } from "gatsby-plugin-i18n-l10n"
 import LanguageSelector from "./LanguageSelector"
 import { DesktopNavigation, MobileNavigation } from "./Navigation"
 import MDXSetup from "./MDXSetup"
+import { useIntl } from "react-intl"
 
 interface LayoutProps {
   location: any,
@@ -18,7 +19,7 @@ const Layout = (props: LayoutProps) => {
   const locale = useI18nL10nContext().prefix
 
   return (
-    <div className="min-w-[320px]">
+    <div className="min-w-[320px] bg-gray-50">
       <StainHeader title={props.title} />
       <main><MDXSetup>{props.children}</MDXSetup></main>
       <StainFooter />
@@ -27,23 +28,25 @@ const Layout = (props: LayoutProps) => {
 }
 
 const StainHeader = (props: { title: string }) => {
+  const intl = useIntl()
+
   return (
-    <header className="pointer-events-none relative z-50 flex flex-col mb-6 mx-4">
-      <div className="top-0 z-10 pt-6">
+    <header className="pointer-events-none z-50 w-full fixed">
+      <div className="flex flex-col py-2 sm:py-4 md:py-8 px-12 bg-blue-400 bg-opacity-60 shadow-md shadow-gray-800 backdrop-blur-sm">
         <div className="relative flex items-center gap-4">
-          <LocalizedLink className="pointer-events-auto" to="/">
-            <div className="hidden sm:flex text-4xl font-bold flex-grow">
-              STAIN Technologies
+          <LocalizedLink className="pointer-events-auto flex-1" to="/">
+            <div className="hidden sm:flex text-2xl font-bold flex-grow text-white">
+              {intl.formatMessage({ id: "companyName" })}
             </div>
-            <div className="flex sm:hidden text-4xl font-bold flex-grow">
-              STAIN
+            <div className="flex sm:hidden text-2xl font-bold flex-grow text-white">
+              {intl.formatMessage({ id: "companyNameShort" })}
             </div>
           </LocalizedLink>
-          <div className="flex flex-1 justify-end">
+          <div className="flex flex-1 justify-end items-center h-40px">
             <DesktopNavigation className="pointer-events-auto hidden md:flex text-xl gap-4" />
             <MobileNavigation className="pointer-events-auto md:hidden flex text-xl" />
           </div>
-          <div className="flex justify-end pointer-events-auto">
+          <div className="flex-0 justify-end h-40px pointer-events-auto lg:ml-4 xl:ml-8">
             <LanguageSelector />
           </div>
         </div>
@@ -53,50 +56,38 @@ const StainHeader = (props: { title: string }) => {
 }
 
 const StainFooter = () => {
+  const intl = useIntl()
+
   return (
     <footer className="w-full">
-      <div className="flex p-8">
-        <div className="flex-1 p-2 mr-2 text-md">
-          <h2 className="text-lg font-bold">Stain Technologies</h2>
-          <br />
-          Vedbendvej 22, 1.
-          <br />
-          5220 Odense SØ
-          <br /> <br />
-          <b>Phone:</b> <a href="tel:004542409399">(+45) 42 40 93 99</a>
-          <br />
-          <b>Mail:</b> <a href="mailto:mail@stain.dk">mail@stain.dk</a>
-          <br /><br />
-          <b>CVR:</b> 41500867
+      <div className="p-8">
+        <div>
+          <h2 className="text-lg font-bold text-center">{intl.formatMessage({ id: "companyName" })}</h2>
         </div>
-        <div className="hidden md:flex-1" />
-        <div className="flex-1 text-right p-2 ml-2 text-md">
-          <h2 className="text-lg font-bold">Shortcuts</h2>
-          <br />
-          <Link to="/services">
-            Our Services
-          </Link>
-          <br />
-          <Link to="/about">
-            About Us
-          </Link>
-          <br />
-          <Link to="/contact">
-            Get In Contact
-          </Link>
+        <div className="flex">
+          <div className="flex-1 p-2 mr-2 text-md text-right">
+            <br />
+            <a href="tel:004542409399">(+45) 42 40 93 99</a>
+            <br />
+            <a href="mailto:mail@stain.dk">mail@stain.dk</a>
+            <br />
+          </div>
+          <div className="flex-1 p-2 ml-2 text-md">
+            <br />
+            Vedbendvej 22, 1.
+            <br />
+            {intl.formatMessage({ id: "postal" })}
+          </div>
+        </div>
+        <div className="text-center">
+          <br/>
+          <b>{intl.formatMessage({ id: "cvr" })}</b> 41500867
         </div>
       </div>
       <hr className="mb-2" />
       <div className="flex justify-center mb-2">
         <div className="flex gap-1 text-xs flex-col md:flex-row text-center">
-          <p>© Stain Technologies {new Date().getFullYear()}</p>
-          <p className="hidden md:block">-</p>
-          <div className="flex gap-1 text-xs">
-            <p>Static site powered by</p>
-            <a href="https://www.gatsbyjs.com">
-              <img src={gatsbyLogo} alt="Gatsby" className="h-4" />
-            </a>
-          </div>
+          <p>© {intl.formatMessage({ id: "companyName" })} {new Date().getFullYear()}</p>
         </div>
       </div>
     </footer>

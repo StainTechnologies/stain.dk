@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import StainCover from "../components/stain-cover"
 
-import coverImage from "../images/placeholders/service1.webp"
+import coverImage from "../images/graphql-image.jpg"
 
 interface Stain404DataProps {
   site: {
