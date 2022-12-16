@@ -11,6 +11,7 @@ interface CreatePagesProps {
 
 exports.createPages = async (props: CreatePagesProps) => {
   const { createPage } = props.actions
+  return
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.tsx`)

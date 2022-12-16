@@ -15,12 +15,13 @@ const config: GatsbyConfig = {
   // If you use VSCode you can also use the GraphQL plugin
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
-  plugins: ["gatsby-plugin-image", {
+  plugins: ["gatsby-plugin-image", 
+  /*{
     resolve: 'gatsby-plugin-manifest',
     options: {
       "icon": "src/images/icon.png"
     }
-  }, "gatsby-plugin-mdx", "gatsby-plugin-sharp", "gatsby-transformer-sharp", 'gatsby-plugin-postcss', {
+  },*/ "gatsby-plugin-mdx", "gatsby-plugin-sharp", "gatsby-transformer-sharp", 'gatsby-plugin-postcss', {
     resolve: 'gatsby-source-filesystem',
     options: {
       "name": "images",
@@ -34,20 +35,6 @@ const config: GatsbyConfig = {
       "path": "./src/pages/"
     },
     __key: "pages"
-  }, {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "about",
-      "path": "./content/about/"
-    },
-    __key: "about"
-  }, {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      "name": "services",
-      "path": "./content/services/"
-    },
-    __key: "services"
   }, {
     resolve: `gatsby-plugin-i18n-l10n`,
     options: {
