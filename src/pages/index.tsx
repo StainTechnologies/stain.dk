@@ -169,8 +169,10 @@ const StainAboutUs = () => {
         <h2 className="text-3xl font-bold text-ellipsis pb-4 self-center">{intl.formatMessage({ id: "storyHeading" })}</h2>
         {intl.formatMessage({ id: "storyText1" })}
         <br/><br/>
+        {/*
         {intl.formatMessage({ id: "storyText2" })}
         <br/><br/>
+        */}
         {intl.formatMessage({ id: "storyText3" })}
         <br/><br/>
       </div>

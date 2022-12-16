@@ -20,9 +20,10 @@ const StainContact: React.FC<PageProps> = ({ location }) => {
       <div className="flex flex-col items-center">
         <div className="text-center mt-8 max-w-6xl">
           <h1 className="text-4xl font-bold mb-2">{intl.formatMessage({ id: "contactTitle" })}</h1>
-          <p className="text-md mb-8">
-          {intl.formatMessage({ id: "contactSubtitle" })}
+          <p className="text-md mb-8 mx-2">
+            {intl.formatMessage({ id: "contactSubtitle" })}
             <br />
+            {intl.formatMessage({ id: "contactText1" })}
           </p>
         </div>
       </div>

@@ -20,7 +20,7 @@
   "home": "Home",
   "contact": "Contact",
   "storyText1": "Founded by a student at SDU University in Odense, Denmark, STAIN was born out of a desire to help provide students with relevant practical experience within software development.",
-  "storyText2": "The founder discovered that many talented students were being overlooked because they were considered a liability or too time-consuming to train. In response, STAIN was founded with the goal of providing these students with opportunities, but also training and the experience they needed to succeed in the tech industry.",
+  "storyText2": "The founder discovered that many prosperous students were being overlooked because they were considered a liability or too time-consuming to train. In response, STAIN was founded with the goal of providing these students with opportunities, but also training and the experience they needed to succeed in the tech industry.",
   "storyText3": "In addition to providing quality software, STAIN has also made it a priority to support the next generation of tech professionals, both through employment but also plans to have a presence at universities, to cultivate a strong talent pool.",
   "expertiseHeading": "Our expertise",
   "expertiseSubHeading": "We have direct knowledge of these key technologies, and we continously look out for the next generation technology",
@@ -39,5 +39,6 @@
   "contactSubtitle": "We offer a wide range of software services to help accellerate your business.",
   "404SubTitle": "Page does not exist",
   "404Explaination": "The page you attempted to view does not exist",
-  "404Actionable": "You can navigate back to the front page"
+  "404Actionable": "You can navigate back to the front page",
+  "contactText1": "Get in touch today, or schedule a meeting to find out how we can support and bring value to your business"
 }

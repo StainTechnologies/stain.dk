@@ -37,7 +37,8 @@
   "serviceSystemMaintenanceDesc": "Frigør interne resourcer på at skabe værdi, og lad os håndtere vedligeholdelsen af dit system.",
   "storyHeading": "Om os",
   "storyText1": "Stiftet af en studerende hos Syddansk Universitet i Odense, Danmark. STAIN blev grundlagt ud fra efterspørgelsen på studierelevante udviklings opgaver.",
-  "storyText2": "",
+  "storyText2": " ",
   "storyText3": "Udover at levere software af høj kvalitet, så prioriterer STAIN at understøtte den næste generation af software ingeniører, gennem opgaver og sparingsmuligheder på universiteter.",
-  "welcomeSub": "Software ydelser tilpasset dine behov"
+  "welcomeSub": "Software ydelser tilpasset dine behov",
+  "contactText1": "Kontakt os for at høre mere om hvilken værdi vi kan yde til dit projekt eller virksomhed"
 }
