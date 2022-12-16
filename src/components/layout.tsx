@@ -11,7 +11,6 @@ import { useIntl } from "react-intl"
 
 interface LayoutProps {
   location: any,
-  title: string,
   children: React.ReactNode
 }
 
@@ -20,19 +19,19 @@ const Layout = (props: LayoutProps) => {
 
   return (
     <div className="min-w-[320px] bg-gray-50">
-      <StainHeader title={props.title} />
+      <StainHeader/>
       <main><MDXSetup>{props.children}</MDXSetup></main>
       <StainFooter />
     </div>
   )
 }
 
-const StainHeader = (props: { title: string }) => {
+const StainHeader = () => {
   const intl = useIntl()
 
   return (
     <header className="pointer-events-none z-50 w-full fixed">
-      <div className="flex flex-col py-2 sm:py-4 md:py-8 px-12 bg-blue-400 bg-opacity-60 shadow-md shadow-gray-800 backdrop-blur-sm">
+      <div className="flex flex-col py-2 sm:py-4 md:py-6 px-12 bg-blue-400 bg-opacity-60 shadow-md shadow-gray-800 backdrop-blur-sm">
         <div className="relative flex items-center gap-4">
           <LocalizedLink className="pointer-events-auto flex-1" to="/">
             <div className="hidden sm:flex text-2xl font-bold flex-grow text-white">

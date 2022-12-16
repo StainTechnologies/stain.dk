@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql, PageProps } from "gatsby"
+import { graphql, HeadFC, PageProps } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -7,25 +7,21 @@ import StainCover from "../components/stain-cover"
 
 import coverImage from "../images/graphql-image.jpg"
 
-interface Stain404DataProps {
-  site: {
-    siteMetadata: {
-      title: string
-    }
-  }
-}
+import EN from "../../i18n/en.json"
+import DA from "../../i18n/dk.json"
+import { useIntl } from "react-intl"
 
-const Stain404: React.FC<PageProps<Stain404DataProps>> = ({ data, location }) => {
-    const siteTitle = data.site.siteMetadata?.title || `Title`
+const Stain404: React.FC<PageProps> = ({ location }) => {
+    const intl = useIntl()
 
     return (
-        <Layout location={location} title={siteTitle}>
-            <StainCover title="404: Not found" subtitle="Page does not exist" coverImage={coverImage}></StainCover>
-            <div style={{ alignContent: "center", textAlign: "center" }}>
-                <h1>The page you attempted to view does not exist</h1>
-                <p>
-                  You can navigate back to the front page
-                </p>
+        <Layout location={location}>
+            <StainCover title={intl.formatMessage({ id: "404Title" })} subtitle={intl.formatMessage({ id: "404SubTitle" })} coverImage={coverImage}></StainCover>
+            <div className="flex flex-col items-center mb-12">
+              <div className="text-center mt-12 max-w-7xl mx-2">
+                <h3 className="text-2xl font-bold uppercase my-2">{intl.formatMessage({ id: "404Explaination" })}</h3>
+                <p className="text-md mb-2">{intl.formatMessage({ id: "404Actionable" })}</p>
+              </div>
             </div>
         </Layout>
     )
@@ -33,7 +29,14 @@ const Stain404: React.FC<PageProps<Stain404DataProps>> = ({ data, location }) =>
 
 export default Stain404
 
-export const Head = () => <Seo title="404: Not found" />
+export const Head: HeadFC = (props) => {
+  const locale = (props.pageContext as { locale: string }).locale
+  const title = { "en-US": EN["404Title"], "da-DK": DA["404Title"] }
+
+  return (
+    <Seo locale={locale} title={title} />
+  )
+}
 
 export const pageQuery = graphql`
   {

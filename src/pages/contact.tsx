@@ -1,31 +1,27 @@
 import * as React from "react"
-import { graphql, PageProps } from "gatsby"
+import { graphql, HeadFC, PageProps } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import StainCover from "../components/stain-cover"
 
 import coverImage from "../images/graphql-image.jpg"
+import { useIntl } from "react-intl"
 
-interface StainContactDataProps {
-  site: {
-    siteMetadata: {
-      title: string
-    }
-  }
-}
+import EN from "../../i18n/en.json"
+import DA from "../../i18n/dk.json"
 
-const StainContact: React.FC<PageProps<StainContactDataProps>> = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+const StainContact: React.FC<PageProps> = ({ location }) => {
+  const intl = useIntl()
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <StainCover title="Contact Us" subtitle="" coverImage={coverImage}></StainCover>
+    <Layout location={location}>
+      <StainCover title={intl.formatMessage({ id: "contactTitle" })} subtitle="" coverImage={coverImage}></StainCover>
       <div className="flex flex-col items-center">
         <div className="text-center mt-8 max-w-6xl">
-          <h1 className="text-4xl font-bold mb-2">Contact Us</h1>
+          <h1 className="text-4xl font-bold mb-2">{intl.formatMessage({ id: "contactTitle" })}</h1>
           <p className="text-md mb-8">
-            We offer a wide range of software services to help accellerate your business.
+          {intl.formatMessage({ id: "contactSubtitle" })}
             <br />
           </p>
         </div>
@@ -36,7 +32,14 @@ const StainContact: React.FC<PageProps<StainContactDataProps>> = ({ data, locati
 
 export default StainContact
 
-export const Head = () => <Seo title="Contact Us" />
+export const Head: HeadFC = (props) => {
+  const locale = (props.pageContext as { locale: string }).locale
+  const title = { "en-US": EN["contactTitle"], "da-DK": DA["contactTitle"] }
+
+  return (
+    <Seo locale={locale} title={title} />
+  )
+}
 
 export const pageQuery = graphql`
   {

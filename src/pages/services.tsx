@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql, PageProps, Link as oldLink } from "gatsby"
+import { graphql, PageProps, Link as oldLink, HeadFC } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -8,25 +8,22 @@ import StainCover from "../components/stain-cover"
 import coverImage from "../images/graphql-image.jpg"
 import { LocalizedLink } from "gatsby-plugin-i18n-l10n"
 
+import EN from "../../i18n/en.json"
+import DA from "../../i18n/dk.json"
+
 interface StainServiceDataProps {
-    site: {
-        siteMetadata: {
-            title: string
-        }
-    },
     allFile: {
         nodes: any
     }
 }
 
 const StainServices: React.FC<PageProps<StainServiceDataProps>> = ({ data, location }) => {
-    const siteTitle = data.site.siteMetadata?.title || `Title`
     const posts = data.allFile.nodes
 
     let alternate = false;
 
     return (
-        <Layout location={location} title={siteTitle}>
+        <Layout location={location}>
             <StainCover title="Our Services" subtitle="We offer a wide range of software services to help you accellerate your business" coverImage={coverImage}></StainCover>
             <div className="flex flex-col items-center">
                 <div className="text-center mt-8 max-w-6xl">
@@ -108,7 +105,14 @@ function StainServiceCard(props: StainServiceCardProps, page: PageProps) {
     )
 }
 
-export const Head = () => <Seo title="Services" />
+export const Head: HeadFC = (props) => {
+    const locale = (props.pageContext as { locale: string }).locale
+    const title = { "en-US": EN["serviceTitle"], "da-DK": DA["serviceTitle"] }
+  
+    return (
+      <Seo locale={locale} title={title} />
+    )
+  }
 
 export const pageQuery = graphql`
   query($locale: String!){

@@ -6,52 +6,52 @@
  */
 
 import * as React from "react"
-import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
+interface translations {
+  [key: string]: string
+}
+
 interface SEOProps {
-  description?: string,
-  lang?: string,
-  title?: string,
+  description?: translations,
+  title: translations,
+  locale: string,
   children?: React.ReactNode
 }
 
 const Seo = (props: SEOProps) => {
-  const { site } = useStaticQuery(
+  const { site, sitePage } = useStaticQuery(
     graphql`
-      {
-        site {
-          siteMetadata {
-            title
-            description
-          }
-        }
-      }
-    `
+       {
+         site {
+           siteMetadata {
+             title
+             description
+           }
+         }
+       }
+     `
   )
 
-  const metaDescription = props.description || site.siteMetadata.description
+  let metaDescription = site.siteMetadata.description
+  if (props.description !== undefined) {
+    metaDescription = props.description[props.locale] || metaDescription
+  }
+  
   const defaultTitle = site.siteMetadata?.title
+
+  const title = props.title[props.locale]
 
   return (
     <>
-      <title>{defaultTitle ? `${props.title} | ${defaultTitle}` : props.title}</title>
+      <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
       <meta name="description" content={metaDescription} />
-      <meta property="og:title" content={props.title} />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content="website" />
       {props.children}
     </>
   )
-}
-
-Seo.defaultProps = {
-  description: ``,
-}
-
-Seo.propTypes = {
-  description: PropTypes.string,
-  title: PropTypes.string.isRequired,
 }
 
 export default Seo
